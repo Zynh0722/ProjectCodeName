@@ -15,9 +15,9 @@ TBD
 TBD
 
 ##   Support
-Nick - zynh0722@gmail.com
-Ethan - 1ethanhansen@protonmail.com
-Nathan - gabrielsen1122@gmail.com
+Nick - zynh0722@gmail.com  
+Ethan - 1ethanhansen@protonmail.com  
+Nathan - gabrielsen1122@gmail.com  
 
 ## Authors and Acknowledement
   ### Authors
