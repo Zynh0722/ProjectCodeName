@@ -1,4 +1,4 @@
 import pytest
 
 def test_travis_1():
-    assert(true is true)
+    assert(True is True)
