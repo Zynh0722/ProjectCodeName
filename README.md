@@ -19,6 +19,7 @@ TBD
 Nick - zynh0722@gmail.com  
 Ethan - 1ethanhansen@protonmail.com  
 Nathan - gabrielsen1122@gmail.com  
+Kaylani - bluohappyduckie@gmail.com
 
 ## Authors and Acknowledement
   ### Authors
