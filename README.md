@@ -1,4 +1,5 @@
-#  \<ProjectCodeName>
+ #  \<ProjectCodeName> 
+[![Build Status](https://travis-ci.com/Zynh0722/ProjectCodeName.svg?branch=master)](https://travis-ci.com/Zynh0722/ProjectCodeName)
 
 - [X] Make Github Repo
 - [X] Make ReadMe
