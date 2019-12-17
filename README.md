@@ -4,7 +4,8 @@
 - [X] Make Github Repo
 - [X] Make ReadMe
 - [X] Actually make the ReadMe useful (Is there a way to make a half checkmark)
-- [ ] Actually put some code in the Repo
+- [X] Actually put some code in the Repo
+- [ ] Actually make the application
 
 ##   Description
 \<ProjectCodeName> is our senior capstone project for EASA. We are developing a simple track management system to simplify the registration process and document management for Total Destruction Racing Team. Our goal is to have a fully working program by 15-May-2020 using four engineers and $500.
