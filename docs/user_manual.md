@@ -5,7 +5,7 @@
 ### Laptop convert to Linux
 * https://www.ifixit.com/Guide/How+to+convert+a+generic+Chromebook+to+Linux+OS/108259
 
-### Install all requirements on dev laptops
+### Set up repo on dev laptops
 * Create a [virtual environment](https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html)
   * Open pycharm
   * `ctrl + alt + s` to open settings
@@ -22,3 +22,7 @@
 * Install requirements
   * open requirements.txt
   * click `install requirements`
+* Install modules
+  * open the terminal in pycharm
+  * cd into trackmanagementsystem
+  * enter `pip install -e .`
