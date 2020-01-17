@@ -16,4 +16,3 @@ install:
 
 script:
   - pytest
-  - python trackmanagementsystem/__main__.py
