@@ -3,6 +3,7 @@ import toga
 
 def button_handler(widget):
     print("hello")
+    return True
 
 
 def build(app):

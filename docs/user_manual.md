@@ -24,5 +24,4 @@
   * click `install requirements`
 * Install modules
   * open the terminal in pycharm
-  * cd into trackmanagementsystem
   * enter `pip install -e .`
