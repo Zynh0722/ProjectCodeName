@@ -2,17 +2,22 @@ import toga
 import main_page_funcs
 
 
-def button_handler(widget):
+def hello_there_handler(widget):
     main_page_funcs.hello_there()
 
 
 def build(app):
     box = toga.Box()
 
-    button = toga.Button('Hello there', on_press=button_handler)
-    button.style.padding = 50
-    button.style.flex = 1
-    box.add(button)
+    hello_there_button = toga.Button('Hello there', on_press=hello_there_handler)
+    hello_there_button.style.padding = 50
+    hello_there_button.style.flex = 1
+    box.add(hello_there_button)
+
+    goodbye_there_button = toga.Button('Goodbye', on_press=hello_there_handler)
+    goodbye_there_button.style.flex = 1
+    goodbye_there_button.style.padding = 50
+    box.add(goodbye_there_button)
 
     return box
 
