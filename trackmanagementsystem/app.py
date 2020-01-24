@@ -1,15 +1,15 @@
 import toga
+import main_page_funcs
 
 
 def button_handler(widget):
-    print("hello")
-    return True
+    main_page_funcs.hello_there()
 
 
 def build(app):
     box = toga.Box()
 
-    button = toga.Button('Hello world', on_press=button_handler)
+    button = toga.Button('Hello there', on_press=button_handler)
     button.style.padding = 50
     button.style.flex = 1
     box.add(button)
