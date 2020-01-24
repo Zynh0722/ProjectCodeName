@@ -1,9 +1,10 @@
 import pytest
-import trackmanagementsystem.main_page_funcs as main_funcs
+from trackmanagementsystem.main_page_funcs import hello_there
 
 
 def test_travis_1():
     assert (True is True)
 
+
 def test_hello_there_1():
-    assert (main_funcs.hello_there() is True)
+    assert (hello_there() is True)
