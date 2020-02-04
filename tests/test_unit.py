@@ -10,7 +10,7 @@ def test_travis_1():
 
 def test_new_vehicle():
     vehicle_test = Vehicle("DeLorean", 1985, "Space grey", "Flux capacitor", "Timey Wimey",
-                           "Amblin Entertainment")
+                           "Amblin Entertainment", "Time Travelers Anonymous")
     assert (vehicle_test.name == "Timey Wimey" and vehicle_test.engine == "Flux capacitor")
 
 
