@@ -1,6 +1,6 @@
 import pytest
 import trackmanagementsystem.app as app
-import objects.vehicle
+from objects.vehicle import Vehicle
 
 
 def test_travis_1():
@@ -8,6 +8,6 @@ def test_travis_1():
 
 
 def test_new_vehicle():
-    vehicle_test = objects.Vehicle("DeLorean", 1985, "Space grey", "Flux capacity", "Timey Wimey",
+    vehicle_test = Vehicle("DeLorean", 1985, "Space grey", "Flux capacity", "Timey Wimey",
                                    "Amblin Entertainment")
     assert (vehicle_test.name == "Timey Wimey")
