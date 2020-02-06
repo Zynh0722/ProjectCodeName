@@ -25,3 +25,6 @@
 * Install modules
   * open the terminal in pycharm
   * enter `pip install -e .`
+
+### toga examples
+* https://github.com/beeware/toga/tree/master/examples
