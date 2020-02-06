@@ -22,10 +22,12 @@ def build(app):
         for i in range(1, 100)
     ]
 
+    newline = "\n hi kaylani"
+
     left_container = toga.Table(headings=['Cars', 'Value'], data=data)
 
     racing_content = toga.Box(style=Pack(direction=ROW, padding=50))
-    racing_content.add(toga.Button("vroom", on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
+    racing_content.add(toga.Button("vroom{}{}".format(newline, newline), on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
     racing_content.add(toga.Button("zoom", on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
 
     queued_content = toga.Box(style=Pack(direction=ROW, padding=50))
