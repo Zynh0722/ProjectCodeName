@@ -1,6 +1,6 @@
 import toga
 import trackmanagementsystem.main_page_funcs as main_page_funcs
-from toga.style.pack import Pack, COLUMN
+from toga.style.pack import Pack, COLUMN, ROW
 
 
 def red_ford_handler(widget):
@@ -24,37 +24,46 @@ def build(app):
 
     left_container = toga.Table(headings=['Cars', 'Value'], data=data)
 
-    mid_content = toga.Box(style=Pack(direction=COLUMN, padding_top=50))
+    racing_content = toga.Box(style=Pack(direction=ROW, padding=50))
+    racing_content.add(toga.Button("vroom", on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
+    racing_content.add(toga.Button("zoom", on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
 
-    mid_content.add(toga.Button("Hello there.", on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
+    queued_content = toga.Box(style=Pack(direction=ROW, padding=50))
+    queued_content.add(toga.Button("nyoom", on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
+    queued_content.add(toga.Button("fwoom", on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
 
-    mid_container = toga.ScrollContainer(horizontal=False)
+    right_content = toga.Box(style=Pack(direction=COLUMN, padding_top=50))
+    right_content.add(racing_content)
+    right_content.add(queued_content)
 
-    mid_container.content = mid_content
+    # mid_content = toga.Box(style=Pack(direction=COLUMN, padding_top=50))
+    #
+    # mid_content.add(toga.Button("Hello there.", on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
+    #
+    # mid_container = toga.ScrollContainer(horizontal=False)
+    #
+    # mid_container.content = mid_content
+    #
+    # right_content = toga.Box(
+    #     style=Pack(direction=COLUMN, padding_top=50)
+    # )
+    #
+    # for b in range(0, 10):
+    #     right_content.add(
+    #         toga.Button(
+    #             'Red Ford %s' % b,
+    #             on_press=red_ford_handler,
+    #             style=Pack(width=200, padding=20)
+    #         )
+    #     )
 
-    right_content = toga.Box(
-        style=Pack(direction=COLUMN, padding_top=50)
-    )
-
-    for b in range(0, 10):
-        right_content.add(
-            toga.Button(
-                'Red Ford %s' % b,
-                on_press=red_ford_handler,
-                style=Pack(width=200, padding=20)
-            )
-        )
     right_container = toga.ScrollContainer(horizontal=False)
 
     right_container.content = right_content
 
-    right_split = toga.SplitContainer()
-
-    right_split.content = [mid_container, right_container]
-
     split = toga.SplitContainer()
 
-    split.content = [left_container, right_split]
+    split.content = [right_container, left_container]
 
     # red_ford_button = toga.Button('Red Ford', on_press=red_ford_handler)
     # red_ford_button.style.padding = 50
