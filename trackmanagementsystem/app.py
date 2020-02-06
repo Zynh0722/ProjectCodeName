@@ -22,7 +22,15 @@ def build(app):
         for i in range(1, 100)
     ]
 
-    left_container = toga.Table(headings=['Red Ford', 'Value'], data=data)
+    left_container = toga.Table(headings=['Cars', 'Value'], data=data)
+
+    mid_content = toga.Box(style=Pack(direction=COLUMN, padding_top=50))
+
+    mid_content.add(toga.Button("Hello there.", on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
+
+    mid_container = toga.ScrollContainer(horizontal=False)
+
+    mid_container.content = mid_content
 
     right_content = toga.Box(
         style=Pack(direction=COLUMN, padding_top=50)
@@ -40,9 +48,13 @@ def build(app):
 
     right_container.content = right_content
 
+    right_split = toga.SplitContainer()
+
+    right_split.content = [mid_container, right_container]
+
     split = toga.SplitContainer()
 
-    split.content = [left_container, right_container]
+    split.content = [left_container, right_split]
 
     # red_ford_button = toga.Button('Red Ford', on_press=red_ford_handler)
     # red_ford_button.style.padding = 50
