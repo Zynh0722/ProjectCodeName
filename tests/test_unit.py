@@ -23,6 +23,7 @@ def test_blue_toyota_1():
 
 
 def test_new_vehicle():
+    global vehicle_test
     vehicle_test = Vehicle("DeLorean", 1985, "Space grey", "Flux capacitor", "Timey Wimey",
                            "Amblin Entertainment", "Time Travelers Anonymous")
     assert (vehicle_test.name == "Timey Wimey" and vehicle_test.engine == "Flux capacitor")
@@ -36,10 +37,17 @@ def test_new_driver():
     assert (driver_test.zip_code == 95420 and driver_test.state == "CA")
 
 
-def test_save_drivers_to_json():
+def test_save_info_to_json():
     driver_list = [driver_test]
-    save_drivers_to_json(driver_list)
+    save_info_to_json(driver_list, "drivers.json")
+
+    vehicle_list = [vehicle_test]
+    save_info_to_json(vehicle_list, "vehicles.json")
 
 
 def test_load_drivers_from_json():
-    assert (load_drivers_from_json("drivers.json") == [driver_test])
+    assert (load_drivers_from_json("drivers.json")[0] == [driver_test][0])
+
+
+def test_load_vehicles_from_json():
+    assert (load_vehicles_from_json("vehicles.json")[0] == [vehicle_test][0])
