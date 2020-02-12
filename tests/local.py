@@ -12,6 +12,6 @@ driver2 = Driver("ur mom", "no u", "loserville", "USA", 69420, 5038675309,
 list_of_drivers.append(driver1)
 list_of_drivers.append(driver2)
 
-save_info_to_json(list_of_drivers)
+save_info_to_json(list_of_drivers, "drivers.json")
 read_list_of_drivers = load_drivers_from_json("drivers.json")
 print(read_list_of_drivers)

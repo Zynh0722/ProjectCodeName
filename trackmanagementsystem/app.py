@@ -93,4 +93,4 @@ def build(app):
 
 
 def main():
-    return toga.App('First App', 'org.beeware.helloworld', startup=build)
+    return toga.App('Track Management System', 'org.beeware.helloworld', startup=build, author="<ProjectCodeName>")
