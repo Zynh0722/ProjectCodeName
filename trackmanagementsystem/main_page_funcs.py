@@ -19,9 +19,8 @@ def black_delorean():
 
 
 def save_drivers_to_json(list_of_drivers):
-    json_string = json.dumps([obj.__dict__ for obj in list_of_drivers])
     with open("drivers.json", "w+") as drivers_file:
-        json.dump(json_string, drivers_file)
+        json.dump([obj.__dict__ for obj in list_of_drivers], drivers_file)
 
 
 def load_drivers_from_json(filename):
