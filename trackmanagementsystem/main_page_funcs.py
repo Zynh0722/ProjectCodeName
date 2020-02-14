@@ -25,9 +25,9 @@ def save_info_to_json(list_of_objects, filename):
 
 
 def load_drivers_from_json(filename):
+    print(filename)
     with open(filename, "r") as drivers_file:
         json_of_drivers = json.load(drivers_file)
-    print(type(json_of_drivers))
     list_of_drivers = []
     for driver in json_of_drivers:
         list_of_drivers.append(
@@ -39,7 +39,6 @@ def load_drivers_from_json(filename):
 def load_vehicles_from_json(filename):
     with open(filename, "r") as vehicles_file:
         json_of_vehicles = json.load(vehicles_file)
-    print(type(json_of_vehicles))
     list_of_vehicles = []
     for vehicle in json_of_vehicles:
         list_of_vehicles.append(
