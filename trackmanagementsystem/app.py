@@ -22,11 +22,13 @@ def build(app):
                                 style=Pack(width=300, alignment="right", padding=30))
 
     def load_drivers_handler(widget):
-        global drivers
         # print(main_page_funcs.load_drivers_from_json("drivers.json")[0].__dict__.values())
-        drivers = [list(obj.__dict__.values()) for obj in main_page_funcs.load_drivers_from_json("drivers.json")]
-        print(drivers)
-        left_container.data = drivers
+        loaded_drivers = [list(obj.__dict__.values()) for obj in main_page_funcs.load_drivers_from_json("drivers.json")]
+        string_drivers = []
+        for driver in loaded_drivers:
+            string_drivers.append([str(entry) for entry in driver])
+        # print(string_drivers)
+        left_container.data = string_drivers
 
     load_drivers_command = toga.Command(load_drivers_handler, label="load vehicles",
                                         tooltip="load the vehicles from the json save file")
