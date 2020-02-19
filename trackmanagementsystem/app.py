@@ -17,25 +17,19 @@ def black_delorean_handler(widget):
     main_page_funcs.black_delorean()
 
 
-def load_drivers_handler(widget):
-    global drivers
-    # print(main_page_funcs.load_drivers_from_json("drivers.json")[0].__dict__.values())
-    drivers = [list(obj.__dict__.values()) for obj in main_page_funcs.load_drivers_from_json("drivers.json")]
-    print(drivers)
-
-
 def build(app):
-    load_drivers_command = toga.Command(load_drivers_handler, label="load vehicles",
-                                        tooltip="load the vehicles from the json save file")
-
     left_container = toga.Table(headings=['Drivers', 'Address', 'City', 'State', 'Zip', 'Phone', 'Email'], data=drivers,
                                 style=Pack(width=300, alignment="right", padding=30))
 
-    def reset_handler(widget, **kwargs):
+    def load_drivers_handler(widget):
+        global drivers
+        # print(main_page_funcs.load_drivers_from_json("drivers.json")[0].__dict__.values())
+        drivers = [list(obj.__dict__.values()) for obj in main_page_funcs.load_drivers_from_json("drivers.json")]
+        print(drivers)
         left_container.data = drivers
 
-    display_drivers_command = toga.Command(reset_handler, label="display drivers",
-                                           tooltip="display te loaded drivers to the table")
+    load_drivers_command = toga.Command(load_drivers_handler, label="load vehicles",
+                                        tooltip="load the vehicles from the json save file")
 
     racing_label = toga.Label("Currently Racing")
 
@@ -103,7 +97,7 @@ def build(app):
     # black_delorean_button.style.flex = 1
     # box.add(black_delorean_button)
 
-    app.main_window.toolbar.add(load_drivers_command, display_drivers_command)
+    app.main_window.toolbar.add(load_drivers_command)
 
     return split
 
