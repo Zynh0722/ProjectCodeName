@@ -42,7 +42,7 @@ def test_save_info_to_json():
     save_info_to_json(driver_list, "drivers.json")
 
     vehicle_list = [vehicle_test]
-    save_info_to_json(vehicle_list, "../trackmanagementsystem/vehicles.json")
+    save_info_to_json(vehicle_list, "vehicles.json")
 
 
 def test_load_drivers_from_json():
@@ -50,4 +50,4 @@ def test_load_drivers_from_json():
 
 
 def test_load_vehicles_from_json():
-    assert (load_vehicles_from_json("../trackmanagementsystem/vehicles.json")[0] == [vehicle_test][0])
+    assert (load_vehicles_from_json("vehicles.json")[0] == [vehicle_test][0])
