@@ -3,6 +3,7 @@ import trackmanagementsystem.main_page_funcs as main_page_funcs
 from toga.style.pack import Pack, COLUMN, ROW
 
 drivers = []
+vehicles = []
 
 
 def red_ford_handler(widget):
@@ -18,19 +19,19 @@ def black_delorean_handler(widget):
 
 
 def build(app):
-    left_container = toga.Table(headings=['Drivers', 'Address', 'City', 'State', 'Zip', 'Phone', 'Email'], data=drivers,
-                                style=Pack(width=300, alignment="right", padding=30))
+    left_container = toga.Table(headings=["Make/model", "Year", "Color", "Engine", "Name", "Sponsors", "Club"],
+                                data=vehicles, style=Pack(width=300, alignment="right", padding=30))
 
-    def load_drivers_handler(widget):
+    def load_vehicles_handler(widget):
         # print(main_page_funcs.load_drivers_from_json("drivers.json")[0].__dict__.values())
-        loaded_drivers = [list(obj.__dict__.values()) for obj in main_page_funcs.load_drivers_from_json("drivers.json")]
-        string_drivers = []
-        for driver in loaded_drivers:
-            string_drivers.append([str(entry) for entry in driver])
+        loaded_vehicles = [list(obj.__dict__.values()) for obj in main_page_funcs.load_vehicles_from_json("vehicles.json")]
+        string_vehicles = []
+        for vehicle in loaded_vehicles:
+            string_vehicles.append([str(entry) for entry in vehicle])
         # print(string_drivers)
-        left_container.data = string_drivers
+        left_container.data = string_vehicles
 
-    load_drivers_command = toga.Command(load_drivers_handler, label="load vehicles",
+    load_vehicles_command = toga.Command(load_vehicles_handler, label="load vehicles",
                                         tooltip="load the vehicles from the json save file")
 
     racing_label = toga.Label("Currently Racing")
@@ -99,7 +100,7 @@ def build(app):
     # black_delorean_button.style.flex = 1
     # box.add(black_delorean_button)
 
-    app.main_window.toolbar.add(load_drivers_command)
+    app.main_window.toolbar.add(load_vehicles_command)
 
     return split
 
