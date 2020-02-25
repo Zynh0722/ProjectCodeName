@@ -5,6 +5,9 @@ from toga.style.pack import Pack, COLUMN, ROW
 drivers = []
 vehicles = []
 
+left_queue = []
+right_queue = []
+
 
 def red_ford_handler(widget):
     main_page_funcs.red_ford()
@@ -37,18 +40,23 @@ def build(app):
     racing_label = toga.Label("Currently Racing")
 
     racing_content = toga.Box(style=Pack(direction=ROW, padding=50))
-    racing_content.add(toga.Button("vroom", on_press=black_delorean_handler,
-                                   style=Pack(width=100, padding=20)))
-    racing_content.add(toga.Button("zoom", on_press=black_delorean_handler,
-                                   style=Pack(width=100, padding=20)))
+
+    left_racing = toga.Button("vroom", on_press=black_delorean_handler,
+                                   style=Pack(width=100, padding=20))
+    racing_content.add(left_racing)
+    right_racing = toga.Button("zoom", on_press=black_delorean_handler,
+                                   style=Pack(width=100, padding=20))
+    racing_content.add(right_racing)
 
     queued_label = toga.Label("Currently Queued")
 
     queued_content = toga.Box(style=Pack(direction=ROW, padding=50))
-    queued_content.add(toga.Button("nyoom", on_press=black_delorean_handler,
-                                   style=Pack(width=100, padding=20)))
-    queued_content.add(toga.Button("fwoom", on_press=black_delorean_handler,
-                                   style=Pack(width=100, padding=20)))
+    left_queued = toga.Button("nyoom", on_press=black_delorean_handler,
+                                   style=Pack(width=100, padding=20))
+    queued_content.add(left_queued)
+    right_queued = toga.Button("fwoom", on_press=black_delorean_handler,
+                                   style=Pack(width=100, padding=20))
+    queued_content.add(right_queued)
 
     right_content = toga.Box(style=Pack(direction=COLUMN, padding_top=50))
     right_content.add(racing_label)
