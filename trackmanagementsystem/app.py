@@ -21,48 +21,57 @@ def black_delorean_handler(widget):
     main_page_funcs.black_delorean()
 
 
+def send_to_queue_handler(widget, row):
+    print()
+    print(row)
+    # main_page_funcs.send_to_queue(vehicles[row], right_queue)
+
+
 def build(app):
-    left_container = toga.Table(headings=["Make/model", "Year", "Color", "Engine", "Name", "Sponsors", "Club"],
-                                data=vehicles, style=Pack(width=300, alignment="right", padding=30))
+    table_container = toga.Table(headings=["Make/model", "Year", "Color", "Engine", "Name", "Sponsors", "Club"],
+                                 data=vehicles, style=Pack(width=300, alignment="right", padding=30),
+                                 on_select=send_to_queue_handler)
 
     def load_vehicles_handler(widget):
         # print(main_page_funcs.load_drivers_from_json("drivers.json")[0].__dict__.values())
-        loaded_vehicles = [list(obj.__dict__.values()) for obj in main_page_funcs.load_vehicles_from_json("vehicles.json")]
+        loaded_vehicles = [list(obj.__dict__.values()) for obj in
+                           main_page_funcs.load_vehicles_from_json("vehicles.json")]
         string_vehicles = []
         for vehicle in loaded_vehicles:
             string_vehicles.append([str(entry) for entry in vehicle])
         # print(string_drivers)
-        left_container.data = string_vehicles
+        table_container.data = string_vehicles
 
     load_vehicles_command = toga.Command(load_vehicles_handler, label="load vehicles",
-                                        tooltip="load the vehicles from the json save file")
+                                         tooltip="load the vehicles from the json save file")
 
     racing_label = toga.Label("Currently Racing")
 
     racing_content = toga.Box(style=Pack(direction=ROW, padding=50))
 
     left_racing = toga.Button("vroom", on_press=black_delorean_handler,
-                                   style=Pack(width=100, padding=20))
+                              style=Pack(width=100, padding=20))
     racing_content.add(left_racing)
     right_racing = toga.Button("zoom", on_press=black_delorean_handler,
-                                   style=Pack(width=100, padding=20))
+                               style=Pack(width=100, padding=20))
     racing_content.add(right_racing)
 
     queued_label = toga.Label("Currently Queued")
 
     queued_content = toga.Box(style=Pack(direction=ROW, padding=50))
     left_queued = toga.Button("nyoom", on_press=black_delorean_handler,
-                                   style=Pack(width=100, padding=20))
+                              style=Pack(width=100, padding=20))
     queued_content.add(left_queued)
     right_queued = toga.Button("fwoom", on_press=black_delorean_handler,
-                                   style=Pack(width=100, padding=20))
+                               style=Pack(width=100, padding=20))
     queued_content.add(right_queued)
 
-    right_content = toga.Box(style=Pack(direction=COLUMN, padding_top=50))
-    right_content.add(racing_label)
-    right_content.add(racing_content)
-    right_content.add(queued_label)
-    right_content.add(queued_content)
+    left_content = toga.Box(style=Pack(direction=COLUMN, padding_top=50))
+
+    left_content.add(racing_label)
+    left_content.add(racing_content)
+    left_content.add(queued_label)
+    left_content.add(queued_content)
 
     # mid_content = toga.Box(style=Pack(direction=COLUMN, padding_top=50))
     #
@@ -72,12 +81,12 @@ def build(app):
     #
     # mid_container.content = mid_content
     #
-    # right_content = toga.Box(
+    # left_content = toga.Box(
     #     style=Pack(direction=COLUMN, padding_top=50)
     # )
     #
     # for b in range(0, 10):
-    #     right_content.add(
+    #     left_content.add(
     #         toga.Button(
     #             'Red Ford %s' % b,
     #             on_press=red_ford_handler,
@@ -87,11 +96,11 @@ def build(app):
 
     right_container = toga.ScrollContainer(horizontal=True)
 
-    right_container.content = right_content
+    right_container.content = left_content
 
     split = toga.SplitContainer()
 
-    split.content = [right_container, left_container]
+    split.content = [right_container, table_container]
 
     # red_ford_button = toga.Button('Red Ford', on_press=red_ford_handler)
     # red_ford_button.style.padding = 50

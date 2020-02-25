@@ -19,6 +19,11 @@ def black_delorean():
     return True
 
 
+def send_to_queue(vehicle, queue):
+    if len(queue) == 0:
+        queue.append(vehicle)
+
+
 def save_info_to_json(list_of_objects, filename):
     with open(filename, "w+") as save_file:
         json.dump([obj.__dict__ for obj in list_of_objects], save_file)
