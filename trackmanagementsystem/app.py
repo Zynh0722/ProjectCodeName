@@ -2,6 +2,9 @@ import toga
 import trackmanagementsystem.main_page_funcs as main_page_funcs
 from toga.style.pack import Pack, COLUMN, ROW
 
+drivers = []
+vehicles = []
+
 
 def red_ford_handler(widget):
     main_page_funcs.red_ford()
@@ -16,26 +19,41 @@ def black_delorean_handler(widget):
 
 
 def build(app):
+    left_container = toga.Table(headings=["Make/model", "Year", "Color", "Engine", "Name", "Sponsors", "Club"],
+                                data=vehicles, style=Pack(width=300, alignment="right", padding=30))
 
-    data = [
-        ('root%s' % i, 'value %s' % i)
-        for i in range(1, 100)
-    ]
+    def load_vehicles_handler(widget):
+        # print(main_page_funcs.load_drivers_from_json("drivers.json")[0].__dict__.values())
+        loaded_vehicles = [list(obj.__dict__.values()) for obj in main_page_funcs.load_vehicles_from_json("vehicles.json")]
+        string_vehicles = []
+        for vehicle in loaded_vehicles:
+            string_vehicles.append([str(entry) for entry in vehicle])
+        # print(string_drivers)
+        left_container.data = string_vehicles
 
-    newline = "\n hi kaylani"
+    load_vehicles_command = toga.Command(load_vehicles_handler, label="load vehicles",
+                                        tooltip="load the vehicles from the json save file")
 
-    left_container = toga.Table(headings=['Cars', 'Value'], data=data)
+    racing_label = toga.Label("Currently Racing")
 
     racing_content = toga.Box(style=Pack(direction=ROW, padding=50))
-    racing_content.add(toga.Button("vroom{}{}".format(newline, newline), on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
-    racing_content.add(toga.Button("zoom", on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
+    racing_content.add(toga.Button("vroom", on_press=black_delorean_handler,
+                                   style=Pack(width=100, padding=20)))
+    racing_content.add(toga.Button("zoom", on_press=black_delorean_handler,
+                                   style=Pack(width=100, padding=20)))
+
+    queued_label = toga.Label("Currently Queued")
 
     queued_content = toga.Box(style=Pack(direction=ROW, padding=50))
-    queued_content.add(toga.Button("nyoom", on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
-    queued_content.add(toga.Button("fwoom", on_press=black_delorean_handler, style=Pack(width=200, padding=20)))
+    queued_content.add(toga.Button("nyoom", on_press=black_delorean_handler,
+                                   style=Pack(width=100, padding=20)))
+    queued_content.add(toga.Button("fwoom", on_press=black_delorean_handler,
+                                   style=Pack(width=100, padding=20)))
 
     right_content = toga.Box(style=Pack(direction=COLUMN, padding_top=50))
+    right_content.add(racing_label)
     right_content.add(racing_content)
+    right_content.add(queued_label)
     right_content.add(queued_content)
 
     # mid_content = toga.Box(style=Pack(direction=COLUMN, padding_top=50))
@@ -59,7 +77,7 @@ def build(app):
     #         )
     #     )
 
-    right_container = toga.ScrollContainer(horizontal=False)
+    right_container = toga.ScrollContainer(horizontal=True)
 
     right_container.content = right_content
 
@@ -82,8 +100,10 @@ def build(app):
     # black_delorean_button.style.flex = 1
     # box.add(black_delorean_button)
 
+    app.main_window.toolbar.add(load_vehicles_command)
+
     return split
 
 
 def main():
-    return toga.App('First App', 'org.beeware.helloworld', startup=build)
+    return toga.App('Track Management System', 'org.beeware.helloworld', startup=build, author="<ProjectCodeName>")
