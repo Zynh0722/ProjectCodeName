@@ -24,6 +24,6 @@ requests==2.22.0
 s3transfer==0.2.1
 six==1.13.0
 toga==0.3.0.dev18
-urllib3==1.25.7
+urllib3==1.26.5
 voc==0.1.6
 whichcraft==0.6.1
